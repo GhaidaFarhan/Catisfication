@@ -47,16 +47,12 @@ struct yogaCatView: View {
                 
                 
                 VStack(spacing: 20) {
-        Text("Cat Yoga")
+                        Text("Cat Yoga")
                         .font(.custom("Sparky Stones Regular", size: 28, relativeTo: .largeTitle))
+                    
                     HStack(spacing: 20) {
-                        NavigationLink(destination: flexibleCat()) {
-                            NavSquares(imageName: "flexibleCat", text: "Upright Seated Angle")
-                        }
-                        
                         NavigationLink(destination: trianglePose()) {
                             NavSquares(imageName: "trianglePoseCat", text: "Triangle Pose")
-
                         }
                     }
                     
@@ -65,21 +61,22 @@ struct yogaCatView: View {
                             NavSquares(imageName: "lotusCat", text: "Lotus Pose")
                         }
                         
-                        NavigationLink(destination: RelaxingScenery()) {
-                            NavSquares(imageName: "relaxCat", text: "Relax-a-Cat")
+                        NavigationLink(destination: treePose()) {
+                            NavSquares(imageName: "treePoseCat", text: "Tree Pose")
                         }
                     }
                     
                     HStack(spacing: 20) {
-                        NavigationLink(destination: RelaxingScenery()) {
-                            NavSquares(imageName: "comedyCat", text: "Comedy Cats")
+                        NavigationLink(destination: flexibleCat()) {
+                            NavSquares(imageName: "flexibleCat", text: "Upright Seated Angle Pose")
                         }
                         
-                        NavigationLink(destination: RelaxingScenery()) {
-                            NavSquares(imageName: "relaxCat", text: "Relax-a-Cat")
-                        }
+//                        NavigationLink(destination:           RelaxingScenery()) {
+//                            NavSquares(imageName: "", text: "")
+//                        }
+                        
                     }
-                    
+                                
                 }
                 .padding(.bottom, 80)
             }
@@ -91,8 +88,7 @@ struct yogaCatView: View {
 }
 
 struct NavSquares: View {
-//    @State private var squareIsClicked = false
-
+    @Environment(\.colorScheme) var colorScheme
     
     
     var imageName: String
@@ -122,9 +118,9 @@ struct NavSquares: View {
                 .font(.custom("Sparky Stones Regular",
                               size: 20
                               ))
-                    .foregroundColor(.black)
-//                    .font(.title3)
-    
+                   .foregroundColor(colorScheme == .dark ? .white : .black)
+
+                    .foregroundColor(.black)    
             }
         }
 
